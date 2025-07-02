@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Install - Premium Game Setup Guides</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --neon-blue: #0ff0fc;
+            --neon-purple: #9600ff;
+            --dark-bg: #0a0a12;
+            --darker-bg: #050508;
+            --text-primary: #e0e0e0;
+            --text-secondary: #a0a0a0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        .cyberpunk-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
+            padding: 30px 0;
+            border-bottom: 1px solid var(--neon-blue);
+            box-shadow: 0 0 20px rgba(0, 255, 252, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(90deg, transparent, var(--neon-blue), transparent);
+            animation: scanline 8s linear infinite;
+            opacity: 0.05;
+            pointer-events: none;
+        }
+        
+        @keyframes scanline {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .logo i {
+            font-size: 2.5rem;
+        }
+        
+        .tagline {
+            margin-top: 10px;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+        
+        /* Main Content */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            color: var(--text-secondary);
+        }
+        
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+        
+        .card {
+            background: rgba(10, 10, 20, 0.7);
+            border: 1px solid rgba(15, 240, 252, 0.2);
+            border-radius: 8px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(15, 240, 252, 0.1);
+            border-color: var(--neon-blue);
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(15, 240, 252, 0.05) 0%, transparent 100%);
+            pointer-events: none;
+        }
+        
+        .card h2 {
+            color: var(--neon-blue);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .card h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--neon-purple);
+        }
+        
+        .card ol, .card ul {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .card li {
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            background: #000;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .note {
+            background: rgba(15, 240, 252, 0.1);
+            border-left: 3px solid var(--neon-blue);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .note p {
+            color: var(--text-primary);
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
+            border-top: 1px solid var(--neon-purple);
+            text-align: center;
+        }
+        
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 12px 25px;
+            border: 1px solid rgba(15, 240, 252, 0.3);
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background: rgba(15, 240, 252, 0.1);
+            border-color: var(--neon-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(15, 240, 252, 0.2);
+        }
+        
+        .social-link i {
+            font-size: 1.5rem;
+        }
+        
+        .whatsapp { color: #25D366; }
+        .instagram { color: #E1306C; }
+        .tiktok { color: #69C9D0; }
+        .email { color: var(--neon-blue); }
+        
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(15, 240, 252, 0.1);
+        }
+        
+        /* Glitch effect */
+        .glitch {
+            position: relative;
+        }
+        
+        .glitch::before, .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.8;
+        }
+        
+        .glitch::before {
+            color: #0ff;
+            z-index: -1;
+            animation: glitch-effect 3s infinite;
+        }
+        
+        .glitch::after {
+            color: #f0f;
+            z-index: -2;
+            animation: glitch-effect 2s infinite reverse;
+        }
+        
+        @keyframes glitch-effect {
+            0% { transform: translate(0); }
+            20% { transform: translate(-3px, 3px); }
+            40% { transform: translate(-3px, -3px); }
+            60% { transform: translate(3px, 3px); }
+            80% { transform: translate(3px, -3px); }
+            100% { transform: translate(0); }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .social-link {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="cyberpunk-container">
+            <div class="logo">
+                <i class="fas fa-gamepad"></i>
+                <span class="glitch" data-text="NEXUS INSTALL">NEXUS INSTALL</span>
+            </div>
+            <p class="tagline">Premium Steam Game Installation Guides</p>
+        </div>
+    </header>
+    
+    <main class="cyberpunk-container">
+        <section class="hero">
+            <h1>Game Installation Tutorials</h1>
+            <p>Step-by-step guides and video tutorials to help you install and activate your premium Steam game licenses. Get the most out of your gaming experience with our comprehensive instructions.</p>
+        </section>
+        
+        <div class="grid-container">
+            <section class="card">
+                <h2><i class="fas fa-download"></i> Basic Installation</h2>
+                <div class="video-container">
+                    <!-- Replace with your actual video embed code -->
+                    <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <ol>
+                    <li>Download the Steam client from the official website</li>
+                    <li>Install Steam and create/log in to your account</li>
+                    <li>Go to "Games" > "Activate a Product on Steam"</li>
+                    <li>Enter your license key when prompted</li>
+                    <li>Follow the on-screen instructions to complete installation</li>
+                </ol>
+                <div class="note">
+                    <p><strong>Note:</strong> Make sure you have enough disk space before starting the installation.</p>
+                </div>
+            </section>
+            
+            <section class="card">
+                <h2><i class="fas fa-key"></i> License Activation</h2>
+                <div class="video-container">
+                    <!-- Replace with your actual video embed code -->
+                    <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <ol>
+                    <li>Launch Steam and log in to your account</li>
+                    <li>Click on "Add a Game" in the bottom left corner</li>
+                    <li>Select "Activate a Product on Steam"</li>
+                    <li>Click "Next" and agree to the subscriber agreement</li>
+                    <li>Enter your product code exactly as provided</li>
+                    <li>Follow any additional prompts to complete activation</li>
+                </ol>
+                <div class="note">
+                    <p><strong>Tip:</strong> License keys are case-sensitive. Copy and paste to avoid errors.</p>
+                </div>
+            </section>
+            
+            <section class="card">
+                <h2><i class="fas fa-tools"></i> Troubleshooting</h2>
+                <div class="video-container">
+                    <!-- Replace with your actual video embed code -->
+                    <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <h3>Common Issues:</h3>
+                <ul>
+                    <li>"Invalid Product Code" - Verify you entered the code correctly</li>
+                    <li>"Product Already Owned" - Check your game library</li>
+                    <li>"Installation Failed" - Check disk space and permissions</li>
+                    <li>"Game Not Launching" - Update graphics drivers</li>
+                </ul>
+                <h3>Advanced Solutions:</h3>
+                <ol>
+                    <li>Clear Steam download cache</li>
+                    <li>Verify integrity of game files</li>
+                    <li>Reinstall Steam client</li>
+                    <li>Contact support with error details</li>
+                </ol>
+            </section>
+            
+            <section class="card">
+                <h2><i class="fas fa-rocket"></i> Performance Optimization</h2>
+                <div class="video-container">
+                    <!-- Replace with your actual video embed code -->
+                    <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <h3>Graphics Settings:</h3>
+                <ul>
+                    <li>Adjust resolution to match your monitor</li>
+                    <li>Start with medium preset and adjust up/down</li>
+                    <li>Disable motion blur and depth of field for clarity</li>
+                </ul>
+                <h3>System Tweaks:</h3>
+                <ol>
+                    <li>Update graphics drivers</li>
+                    <li>Close background applications</li>
+                    <li>Set high performance power plan</li>
+                    <li>Enable Game Mode in Windows</li>
+                </ol>
+                <div class="note">
+                    <p><strong>Pro Tip:</strong> Use Steam's FPS counter to monitor performance impact of changes.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+    
+    <section class="contact">
+        <div class="cyberpunk-container">
+            <h2>Need Help? Contact Us</h2>
+            <div class="social-links">
+                <a href="https://wa.me/YOUR_WHATSAPP_NUMBER" class="social-link whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>WhatsApp</span>
+                </a>
+                <a href="https://instagram.com/YOUR_INSTAGRAM" class="social-link instagram" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                    <span>Instagram</span>
+                </a>
+                <a href="https://tiktok.com/@YOUR_TIKTOK" class="social-link tiktok" target="_blank">
+                    <i class="fab fa-tiktok"></i>
+                    <span>TikTok</span>
+                </a>
+                <a href="mailto:YOUR_EMAIL@gmail.com" class="social-link email">
+                    <i class="fas fa-envelope"></i>
+                    <span>Email</span>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="cyberpunk-container">
+            <p>&copy; 2023 Nexus Install. All rights reserved.</p>
+            <p>This site is not affiliated with Valve or Steam. All game trademarks are property of their respective owners.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Simple animation for cards on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            cards.forEach(card => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+            
+            // Glitch effect on hover for logo
+            const logo = document.querySelector('.logo');
+            logo.addEventListener('mouseenter', () => {
+                logo.classList.add('glitch-active');
+            });
+            logo.addEventListener('mouseleave', () => {
+                logo.classList.remove('glitch-active');
+            });
+        });
+    </script>
+</body>
+</html>
